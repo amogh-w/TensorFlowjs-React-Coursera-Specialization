@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { sequential, layers, tensor2d } from "@tensorflow/tfjs";
 
 const doTraining = async (model, xs, ys) => {
-  const history = await model.fit(xs, ys, {
+  await model.fit(xs, ys, {
     epochs: 500,
     callbacks: {
       onEpochEnd: async (epoch, logs) => {
@@ -26,9 +26,7 @@ const Example1 = () => {
       alert(model.predict(tensor2d([10], [1, 1])));
     });
   }, []);
-  return (
-      <h1>Browser-based Models with TensorFlow.js | Example 1</h1>
-  );
+  return <h1>Browser-based Models with TensorFlow.js | Example 1</h1>;
 };
 
 export default Example1;
