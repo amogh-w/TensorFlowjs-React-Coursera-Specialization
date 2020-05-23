@@ -19,7 +19,6 @@ const run = async () => {
   });
 
   const numOfFeatures = (await trainingData.columnNames()).length - 1;
-  const numOfSamples = 150;
 
   const convertedData = trainingData
     .map(({ xs, ys }) => {
@@ -80,9 +79,11 @@ const run = async () => {
   pIndex = argMax(prediction, 1).dataSync();
   predictions.push(pIndex);
 
-  predictions.map((prediction) => {
+  predictions.forEach((prediction) => {
     console.log(classNames[prediction]);
   });
+
+  return 0;
 };
 
 export const Example2 = () => {
