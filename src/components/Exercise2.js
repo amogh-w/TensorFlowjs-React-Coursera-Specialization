@@ -22,9 +22,9 @@ const NUM_TRAIN_ELEMENTS = Math.floor(TRAIN_TEST_RATIO * NUM_DATASET_ELEMENTS);
 const NUM_TEST_ELEMENTS = NUM_DATASET_ELEMENTS - NUM_TRAIN_ELEMENTS;
 
 const MNIST_IMAGES_SPRITE_PATH =
-  "https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png";
+  "https://storage.googleapis.com/learnjs-data/model-builder/fashion_mnist_images.png";
 const MNIST_LABELS_PATH =
-  "https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8";
+  "https://storage.googleapis.com/learnjs-data/model-builder/fashion_mnist_labels_uint8";
 
 class MnistData {
   constructor() {
@@ -70,8 +70,6 @@ class MnistData {
           );
 
           const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-          console.log(imageData.data.length);
 
           for (let j = 0; j < imageData.data.length / 4; j++) {
             // All channels hold an equal value since the image is grayscale, so
@@ -248,8 +246,20 @@ const save = () => {
   var tensor = resized.expandDims(0);
   var prediction = model.predict(tensor);
   var pIndex = argMax(prediction, 1).dataSync();
+  var classNames = [
+    "T-shirt/top",
+    "Trouser",
+    "Pullover",
+    "Dress",
+    "Coat",
+    "Sandal",
+    "Shirt",
+    "Sneaker",
+    "Bag",
+    "Ankle boot",
+  ];
 
-  alert(pIndex);
+  alert(classNames[pIndex]);
 };
 
 const init = () => {
@@ -274,17 +284,18 @@ const run = async () => {
   // show.modelSummary({ name: "Model Architecture" }, model);
   await trainModel(model, data);
   init();
-  alert("Training is done, try classifying your handwriting!");
+  await model.save("downloads://my_model");
+  alert("Training is done, try classifying your drawings!");
 };
 
-const Example3 = () => {
+const Exercise2 = () => {
   useEffect(() => {
     run();
   }, []);
   return (
     <React.Fragment>
-      <h1>Browser-based Models with TensorFlow.js | Example 3</h1>
-      <h1>Handwriting Classifier!</h1>
+      <h1>Browser-based Models with TensorFlow.js | Exercise 2</h1>
+      <h1>Fashion MNIST Classifier!</h1>
       <canvas
         id="canvas"
         width="280"
@@ -326,4 +337,4 @@ const Example3 = () => {
   );
 };
 
-export default Example3;
+export default Exercise2;
