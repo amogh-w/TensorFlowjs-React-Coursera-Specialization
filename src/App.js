@@ -5,6 +5,7 @@ import Example2 from "./components/Example2";
 import Exercise1 from "./components/Exercise1";
 import Example3 from "./components/Example3";
 import Exercise2 from "./components/Exercise2";
+import Example4 from "./components/Example4";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* <Example2 /> */}
       {/* <Exercise1 /> */}
       {/* <Example3 /> */}
-      <Exercise2 />
+      {/* <Exercise2 /> */}
+      <Example4 />
     </div>
   );
 }
