@@ -7,6 +7,7 @@ import Example3 from "./components/Example3";
 import Exercise2 from "./components/Exercise2";
 import Example4 from "./components/Example4";
 import Example5 from "./components/Example5";
+import Example6 from "./components/Example6";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       {/* <Example3 /> */}
       {/* <Exercise2 /> */}
       {/* <Example4 /> */}
-      <Example5 />
+      {/* <Example5 /> */}
+      <Example6 />
     </div>
   );
 }
